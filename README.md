@@ -12,7 +12,7 @@ There have yet to be any releases.
 4. Click "Load unpacked" and select your disable-meet-camera directory
 The extension should now appear in your list of installed extensions
 
-*Read more on ~[Chrome extensions development basics](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked)~.*
+Read more on ~[Chrome extensions development basics](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked)~.
 
 **Configurations:**
 There is nothing to configure in this release.
