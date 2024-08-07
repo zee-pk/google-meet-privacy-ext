@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Google Meet Privacy",
+  "version": "0.9",
+  "description": "Automatically disables microphone and camera when joining Google Meet",
+  "permissions": [
+    "activeTab"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://meet.google.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  }
+}
