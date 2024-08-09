@@ -11,7 +11,8 @@ This extension disables the microphone and camera on Google Meet at the start of
 2. Open Google Chrome and go to chrome://extensions/
 3. Enable "Developer mode" in the top right corner
 4. Click "Load unpacked" and select the source code directory
-The extension should now appear in your list of installed extensions
+
+   The extension should now appear in your list of installed extensions.
 
 *See Google [documentation](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked) for Chrome extensions development, for more details.*
 
@@ -21,7 +22,7 @@ The extension should now appear in your list of installed extensions
 
 
 ## Known Issues:
-- Extension fails when reloading the page or when the meeting is rejoined.
+- Extension fails when reloading the page or when the meeting is rejoined. 
 
 
 ## License:
