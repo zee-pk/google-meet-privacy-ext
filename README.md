@@ -21,10 +21,6 @@ This extension disables the microphone and camera on Google Meet at the start of
 - There is nothing to configure in this release.
 
 
-## Known Issues:
-- Extension fails when reloading the page or when the meeting is rejoined. 
-
-
 ## License:
 - All components are licensed under the [Apache License, Version 2.0](https://github.com/GoogleChrome/chrome-extensions-samples/blob/main/LICENSE).
 
