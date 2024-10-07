@@ -1,50 +1,60 @@
 function disableDevice(type) {
-  const selector = `button[data-is-muted="false"][aria-label*="${type}"]`;
-  const button = document.querySelector(selector);
+  const selectors = [
+    `button[data-is-muted="false"][aria-label*="${type}"]`,
+    `button[aria-label*="${type}"][aria-pressed="false"]`,
+  ]
+
+  let button = null
+  for (const selector of selectors) {
+    button = document.querySelector(selector)
+    if (button) break
+  }
+
   if (button) {
-    button.click();
-    console.log(`meet-privacy-ext: ${type} disabled`);
+    button.click()
+    console.log(`meet-privacy-ext: ${type} disabled`)
   } else {
-    console.log(`meet-privacy-ext: ${type} button not found or ${type} already disabled`);
+    console.log(
+      `meet-privacy-ext: ${type} button not found or ${type} already disabled`,
+    )
   }
 }
 
 function disableDevices() {
-  disableDevice('microphone');
-  disableDevice('camera');
+  disableDevice('microphone')
+  disableDevice('camera')
 }
 
 function waitForMeetingLoad(callback) {
-  const checkInterval = setInterval(() => {
-    const toolbar = document.querySelector('.fJsklc.nulMpf.Didmac.G03iKb');
+  const observer = new MutationObserver((_, obs) => {
+    const toolbar = document.querySelector('.fJsklc.nulMpf.Didmac.G03iKb')
     if (toolbar) {
-      clearInterval(checkInterval);
-      setTimeout(callback, 1000);
+      obs.disconnect()
+      setTimeout(callback, 500)
     }
-  }, 500);
+  })
+
+  observer.observe(document, { childList: true, subtree: true })
 }
 
 function init() {
-  console.log('meet-privacy-ext: Initializing');
-  waitForMeetingLoad(disableDevices);
+  console.log('meet-privacy-ext: Initializing')
+  waitForMeetingLoad(disableDevices)
 }
 
-// Run on initial page load
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', init);
+  document.addEventListener('DOMContentLoaded', init)
 } else {
-  init();
+  init()
 }
 
-// Run on subsequent navigations or reloads
-window.addEventListener('load', init);
+window.addEventListener('load', init)
 
-// Also run when the URL changes (for single-page app navigation)
-let lastUrl = location.href; 
-new MutationObserver(() => {
-  const url = location.href;
+let lastUrl = location.href
+new MutationObserver((mutations) => {
+  const url = location.href
   if (url !== lastUrl) {
-    lastUrl = url;
-    init();
+    lastUrl = url
+    init()
   }
-}).observe(document, {subtree: true, childList: true});
+}).observe(document, { subtree: true, childList: true })
